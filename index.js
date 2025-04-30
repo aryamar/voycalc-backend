@@ -11,6 +11,15 @@ app.listen(5000, () => {
     console.log('connected to server 2024')
 });
 
+app.get('/', (req, res) => {
+    res.json({ message: 'Welcome to voycalc-backend!' });
+  });
+  
+  // مسیر تست (که قبلاً داشتی)
+  app.get('/api/test', (req, res) => {
+    res.json({ message: 'Hello from backend!' });
+  });
+
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
