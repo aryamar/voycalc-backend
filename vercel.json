@@ -12,6 +12,14 @@
           "dest": "index.js"
       },
       {
+          "src": "/login",
+          "dest": "index.js"
+      },
+      {
+          "src": "/signup",
+          "dest": "index.js"
+      },
+      {
           "src": "/(.*)",
           "dest": "index.js"
       }
