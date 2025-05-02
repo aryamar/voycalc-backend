@@ -69,7 +69,7 @@ app.get('/api/test', (req, res) => {
 
 app.get('/vsltype', (req, res) => {
     console.log('Received GET request to /vsltype');
-    const query = "SELECT VesselType FROM vesseltype";
+    const query = "SELECT Vessel_Type FROM vesseltype";
     db.query(query, (err, data) => {
         if (err) {
             console.error('Error in /vsltype:', err);
