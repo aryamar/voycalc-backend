@@ -18,7 +18,10 @@ app.use(cors({
     origin: ['http://192.168.1.15:3000', 'https://voycalc-frontend.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
-
+app.get('/test-nodb', (req, res) => {
+    console.log('Received GET request to /test-nodb');
+    res.json({ message: 'This is a test without database!' });
+});
 // لاگ برای متغیرهای محیطی
 console.log('DB_HOST:', process.env.DB_HOST);
 console.log('DB_PORT:', process.env.DB_PORT);
