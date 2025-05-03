@@ -190,7 +190,7 @@ app.get('/ports',(req,res)=>{
     const q="SELECT * FROM ports"
     db.query(q,(err,data)=>{
         if(err)return res.json(err)
-            returnres.join(data)
+            return res. json(data)
     })
 })
 
