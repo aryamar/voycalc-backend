@@ -192,6 +192,21 @@ app.get('/ports', async (req, res) => {
     return res.json(ports)
 })
 
+async function getPorts(query) {
+    const values = [`%${query}%`,`%${query}%`];
+    const q = "SELECT fromport,Toport FROM ports WHERE (fromport LIKE ? OR Toport LIKE ? ) ";
+    return new Promise((resolve, reject) => {
+        db.query(q, values, (err, results) => {
+            if (err) {
+                return reject(err)
+            } else {
+                return resolve(results)
+
+            }
+        })
+    })
+}
+
 app.get('/portstatus', (req, res) => {
     const q = "SELECT * FROM portstatus";
     db.query(q, (err, data) => {
