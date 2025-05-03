@@ -186,6 +186,12 @@ app.get('/vsllist', (req, res) => {
     });
 });
 
+app.get('/ports', async (req, res) => {
+    const query = req.query.select;
+    const ports = await getPorts(query)
+    return res.json(ports)
+})
+
 app.get('/portstatus', (req, res) => {
     const q = "SELECT * FROM portstatus";
     db.query(q, (err, data) => {
