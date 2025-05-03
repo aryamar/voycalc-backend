@@ -186,26 +186,34 @@ app.get('/vsllist', (req, res) => {
     });
 });
 
-app.get('/ports', async (req, res) => {
-    const query = req.query.select;
-    const ports = await getPorts(query)
-    return res.json(ports)
+app.get('/ports',(req,res)=>{
+    const q="SELECT * FROM ports"
+    db.query(q,(err,data)=>{
+        if(err)return res.json(err)
+            returnres.join(data)
+    })
 })
 
-async function getPorts(query) {
-    const values = [`%${query}%`,`%${query}%`];
-    const q = "SELECT fromport,Toport FROM ports WHERE (fromport LIKE ? OR Toport LIKE ? ) ";
-    return new Promise((resolve, reject) => {
-        db.query(q, values, (err, results) => {
-            if (err) {
-                return reject(err)
-            } else {
-                return resolve(results)
+// app.get('/ports', async (req, res) => {
+//     const query = req.query.select;
+//     const ports = await getPorts(query)
+//     return res.json(ports)
+// })
 
-            }
-        })
-    })
-}
+// async function getPorts(query) {
+//     const values = [`%${query}%`,`%${query}%`];
+//     const q = "SELECT fromport,Toport FROM ports WHERE (fromport LIKE ? OR Toport LIKE ? ) ";
+//     return new Promise((resolve, reject) => {
+//         db.query(q, values, (err, results) => {
+//             if (err) {
+//                 return reject(err)
+//             } else {
+//                 return resolve(results)
+
+//             }
+//         })
+//     })
+// }
 
 app.get('/portstatus', (req, res) => {
     const q = "SELECT * FROM portstatus";
