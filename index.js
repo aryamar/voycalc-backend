@@ -161,14 +161,15 @@ app.post('/signup', (req, res) => {
 
 app.get('/getlogin',(req,res)=>{
     const q="SELECT * FROM login"
-    db.query(q,(err,data)=>{
+    db.query(q,(err,data)=> {
         if(err)return res.json(err)
             return res.json(data)
     })
 })
 
-app.post('/login', (req, res) => {
+app.get('/login', (req, res) => {
     const { email, password } = req.body;
+    console.log(email+password)
     const q = "SELECT * FROM login WHERE email = ? AND password = ?";
     db.query(q, [email, password], (err, data) => {
         if (err) return res.status(500).json({ message: 'Database error', error: err });
